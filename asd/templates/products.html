@@ -1,0 +1,33 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block title %}
+Products
+{% endblock title %}
+
+{% block content %}
+   <h1>ГОРЯЧИЕ НОВОСТИ</h1>
+   <h3>{{ time_now|date:'M d Y' }}</h3>
+   <hr>
+   {% if products %}
+
+           {% for product in products %}
+           <tr>
+                    <p><td>{{ product.name }}</td></p>
+                    <p><td>{{ product.description|censor }}</td></p>
+                    <p><td>{{ product.dateCreation}}</td> </p>
+           </tr>
+           {% endfor %}
+
+   {% endif %}
+{% endblock content %}
+</body>
+</html>
